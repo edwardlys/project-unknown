@@ -15,8 +15,15 @@ class PageController extends Controller
 
     public function register()
     {
-        $title = "Register";
+        $title = 'Register';
 
-        return view('register', compact('title'));
+        return view('auth.register', compact('title'));
+    }
+
+    public function login()
+    {
+        $title = 'Login';
+
+        return view('auth.login', compact('title'));
     }
 }

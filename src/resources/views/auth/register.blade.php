@@ -9,7 +9,7 @@
             <div class="card-body container">
                 <div class="row">
                     <div class="col">
-                        <h5 class="card-title">Register</h5>
+                        <h5 class="card-title">{{ $title }}</h5>
                     </div>
                 </div>
 
@@ -53,7 +53,7 @@
 
                     <div class="row mt-3">
                         <div class="col text-center">
-                            <a href="#">
+                            <a href="{{ route('page.login') }}">
                                 I already have an account
                             </a>
                         </div>
@@ -63,12 +63,11 @@
                     </div>
                     <div class="row">
                         <div class="col text-center">
-                            <a href="#">
-                                Go back
+                            <a href="{{ route('page.home') }}">
+                                Back to home page
                             </a>
                         </div>
                     </div>
-                    
                 </form>
             </div>
         </div>
