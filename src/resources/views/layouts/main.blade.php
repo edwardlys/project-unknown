@@ -13,6 +13,7 @@
     </head>
     <body>
         @include('components.navbar')
+        @include('components.flash-message')
 
         <div class="content container">
             @yield('content')

@@ -13,8 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', ['App\Http\Controllers\PageController', 'home'])->name('page.home');
+Route::get('/', ['App\Http\Controllers\PageController', 'home'])->name('home');
 
 Route::match(['get', 'post'], '/register', ['App\Http\Controllers\AuthController', 'register'])->name('register');
 
 Route::match(['get', 'post'] ,'/login', ['App\Http\Controllers\AuthController', 'login'])->name('login');
+
+Route::get('/logout', ['App\Http\Controllers\AuthController', 'logout'])->name('logout');

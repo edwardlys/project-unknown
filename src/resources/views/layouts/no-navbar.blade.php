@@ -12,6 +12,8 @@
         <title>{{ env('APP_NAME') }} - @yield('title')</title>
     </head>
     <body>
+        @include('components.flash-message')
+
         <div class="content container">
             @yield('content')
         </div>
