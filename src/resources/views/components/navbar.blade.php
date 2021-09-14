@@ -15,10 +15,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">Home</a>
+                    <a class="nav-link" href="{{ route('page.home') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">News</a>
+                    <a class="nav-link" href="{{ route('page.home') }}">News</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -44,7 +44,7 @@
 
                 @guest
                 <li class="nav-item">
-                    <a class="nav-link">Login/Register</a>
+                    <a class="nav-link" href="{{ route('page.register') }}">Login/Register</a>
                 </li>
                 @endguest                
             </ul>
