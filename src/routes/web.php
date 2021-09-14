@@ -13,10 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', ['App\Http\Controllers\PageController', 'home'])->name('home');
+Route::get('/', ['App\Http\Controllers\HomeController', 'index'])->name('home');
 
-Route::match(['get', 'post'], '/register', ['App\Http\Controllers\AuthController', 'register'])->name('register');
+Route::get('/register', ['App\Http\Controllers\Auth\RegisterController', 'index'])->name('auth.register.index');
+Route::post('/register', ['App\Http\Controllers\Auth\RegisterController', 'register'])->name('auth.register');
 
-Route::match(['get', 'post'] ,'/login', ['App\Http\Controllers\AuthController', 'login'])->name('login');
+Route::get('/login', ['App\Http\Controllers\Auth\LoginController', 'index'])->name('auth.login.index');
+Route::post('/login', ['App\Http\Controllers\Auth\LoginController', 'login'])->name('auth.login');
+Route::get('/logout', ['App\Http\Controllers\Auth\LoginController', 'logout'])->name('auth.logout');
 
-Route::get('/logout', ['App\Http\Controllers\AuthController', 'logout'])->name('logout');
+Route::get('/profile', ['App\Http\Controllers\ProfileController', 'index'])->name('profile')->middleware('auth');

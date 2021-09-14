@@ -13,7 +13,7 @@
                     </div>
                 </div>
 
-                <form method="POST" action="{{ route('register') }}">
+                <form method="POST" action="{{ route('auth.register') }}">
                     @csrf
 
                     <div class="row">
@@ -62,7 +62,7 @@
 
                     <div class="row mt-3">
                         <div class="col text-center">
-                            <a href="{{ route('login') }}">
+                            <a href="{{ route('auth.login.index') }}">
                                 I already have an account
                             </a>
                         </div>
