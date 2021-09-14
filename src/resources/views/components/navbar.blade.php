@@ -44,7 +44,7 @@
 
                 @guest
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('page.register') }}">Login/Register</a>
+                    <a class="nav-link" href="{{ route('register') }}">Login/Register</a>
                 </li>
                 @endguest                
             </ul>

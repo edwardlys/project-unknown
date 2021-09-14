@@ -44,7 +44,7 @@
 
                     <div class="row mt-3">
                         <div class="col text-center">
-                            <a href="{{ route('page.register') }}">
+                            <a href="{{ route('register') }}">
                                 I don't have an account
                             </a>
                         </div>
