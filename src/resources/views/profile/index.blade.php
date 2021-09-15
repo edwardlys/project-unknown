@@ -40,11 +40,6 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <div class="d-grid mx-auto">
-                            <a class="btn btn-secondary">
-                                Edit Account Information
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -61,15 +56,9 @@
                                         Full Name:
                                     </th>
                                     <td>
-                                        @if (!empty($profile->first_name))
-                                        {{ $profile->first_name }} 
-                                        @endif
-
-                                        @if (!empty($profile->last_name))
-                                        {{ $profile->last_name }} 
-                                        @endif
-
-                                        @if (empty($profile->first_name) && empty($profile->last_name))
+                                        @if (!empty($profile->full_name))
+                                        {{ $profile->full_name }} 
+                                        @else
                                         N/A
                                         @endif
                                     </td>
@@ -80,7 +69,7 @@
                                         Date of Birth
                                     </th>
                                     <td>
-                                        @if (!empty($profile->first_name))
+                                        @if (!empty($profile->date_of_birth))
                                         {{ $profile->date_of_birth }}
                                         @else
                                         N/A
@@ -93,7 +82,7 @@
                                         Phone:
                                     </th>
                                     <td>
-                                        @if (!empty($profile->first_name))
+                                        @if (!empty($profile->phone))
                                         {{ $profile->phone }}
                                         @else
                                         N/A
@@ -106,7 +95,7 @@
                                         Address:
                                     </th>
                                     <td>
-                                        @if (!empty($profile->first_name))
+                                        @if (!empty($profile->address))
                                         {{ $profile->address }}
                                         @else
                                         N/A
@@ -116,8 +105,8 @@
                             </tbody>
                         </table>
                         <div class="d-grid mx-auto">
-                            <a class="btn btn-secondary">
-                                Edit Profile Information
+                            <a class="btn btn-secondary" href="{{ route('profile.update.page') }}">
+                                Update profile information
                             </a>
                         </div>
                     </div>

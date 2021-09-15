@@ -23,3 +23,5 @@ Route::post('/login', ['App\Http\Controllers\Auth\LoginController', 'login'])->n
 Route::get('/logout', ['App\Http\Controllers\Auth\LoginController', 'logout'])->name('auth.logout');
 
 Route::get('/profile', ['App\Http\Controllers\ProfileController', 'index'])->name('profile')->middleware('auth');
+Route::get('/profile/update', ['App\Http\Controllers\ProfileController', 'updatePage'])->name('profile.update.page')->middleware('auth');
+Route::post('/profile/update', ['App\Http\Controllers\ProfileController', 'update'])->name('profile.update')->middleware('auth');
