@@ -37,4 +37,14 @@ class UserController extends Controller
             ->back()
             ->with('success', 'User ' . $user->name . ' is now an admin');
     }
+
+    public function removeAdmin(User $user)
+    {
+        $user->is_admin = false;
+        $user->save();
+
+        return redirect()
+            ->back()
+            ->with('success', 'User ' . $user->name . ' is no longer an admin');
+    }
 }

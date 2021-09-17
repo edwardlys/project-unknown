@@ -31,5 +31,6 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['auth'])->group(function () {
         Route::get('/admin/users', ['App\Http\Controllers\Admin\UserController', 'index'])->name('admin.users');
         Route::post('/admin/users/{user}/make-admin', ['App\Http\Controllers\Admin\UserController', 'makeAdmin'])->name('admin.users.make_admin');
+        Route::post('/admin/users/{user}/remove-admin', ['App\Http\Controllers\Admin\UserController', 'removeAdmin'])->name('admin.users.remove_admin');
     });
 });

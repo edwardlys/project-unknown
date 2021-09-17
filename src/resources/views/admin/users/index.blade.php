@@ -15,6 +15,7 @@
 
                         <form class="my-3" method="GET" action="{{ route('admin.users') }}">
                             <input type="search" name="search" class="form-control" placeholder="Search email..." value="{{ $search }}">
+                            <small><i>Press enter to search</i></small>
                         </form>
 
                         <table class="table table-hover table-bordered">
@@ -51,6 +52,11 @@
                                         <form method="POST" action="{{ route('admin.users.make_admin', $user->id) }}">
                                             @csrf
                                             <button type="submit" class="btn btn-primary">Make Admin</button>
+                                        </form>
+                                        @else
+                                        <form method="POST" action="{{ route('admin.users.remove_admin', $user->id) }}">
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger">Remove Admin</button>
                                         </form>
                                         @endif
                                     </td>
