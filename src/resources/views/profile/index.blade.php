@@ -18,7 +18,7 @@
                         <table class="table table-hover table-bordered">
                             <tbody>
                                 <tr>
-                                    <th class="">
+                                    <th>
                                         Username:
                                     </th>
                                     <td>

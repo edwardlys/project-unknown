@@ -22,6 +22,14 @@ Route::get('/login', ['App\Http\Controllers\Auth\LoginController', 'index'])->na
 Route::post('/login', ['App\Http\Controllers\Auth\LoginController', 'login'])->name('auth.login');
 Route::get('/logout', ['App\Http\Controllers\Auth\LoginController', 'logout'])->name('auth.logout');
 
-Route::get('/profile', ['App\Http\Controllers\ProfileController', 'index'])->name('profile')->middleware('auth');
-Route::get('/profile/update', ['App\Http\Controllers\ProfileController', 'updatePage'])->name('profile.update.page')->middleware('auth');
-Route::post('/profile/update', ['App\Http\Controllers\ProfileController', 'update'])->name('profile.update')->middleware('auth');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile', ['App\Http\Controllers\ProfileController', 'index'])->name('profile');
+    Route::get('/profile/update', ['App\Http\Controllers\ProfileController', 'updatePage'])->name('profile.update.page');
+    Route::post('/profile/update', ['App\Http\Controllers\ProfileController', 'update'])->name('profile.update');
+
+    // Admin routes
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/admin/users', ['App\Http\Controllers\Admin\UserController', 'index'])->name('admin.users');
+        Route::post('/admin/users/{user}/make-admin', ['App\Http\Controllers\Admin\UserController', 'makeAdmin'])->name('admin.users.make_admin');
+    });
+});
