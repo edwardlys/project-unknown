@@ -36,6 +36,11 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="{{ route('profile') }}">Profile</a></li>
+
+                        @if (Auth::user()->is_admin)
+                        <li><a class="dropdown-item" href="{{ route('profile') }}">Admin</a></li>
+                        @endif
+                        
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="{{ route('auth.logout') }}">Logout</a></li>
                     </ul>

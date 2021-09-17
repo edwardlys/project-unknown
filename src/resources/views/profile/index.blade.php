@@ -9,7 +9,12 @@
             <div class="card-body container">
                 <div class="row">
                     <div class="col">
-                        <h3>Account</h3>
+                        <h3>
+                            Account 
+                            @if (Auth::user()->is_admin)
+                            <span class="badge bg-success">Admin</span>
+                            @endif
+                        </h3>
                         <table class="table table-hover table-bordered">
                             <tbody>
                                 <tr>
