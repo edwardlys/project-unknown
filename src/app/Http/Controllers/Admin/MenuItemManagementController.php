@@ -106,4 +106,18 @@ class MenuItemManagementController extends Controller
             ->back()
             ->withInput($request->input())
             ->with('error', 'Unable to update menu item at the moment, please contact the system administrators');
-    }}
+    }
+
+    public function delete(MenuItem $menuItem)
+    {
+        if ($menuItem->delete()) {
+            return redirect()
+                ->back()
+                ->with('success', 'Menu item has been deleted from the system');
+        } else {
+            return redirect()
+                ->back()
+                ->with('error', 'Unable to delete menu item at the moment, please contact the system administrators');
+        }
+    }
+}

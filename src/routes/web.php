@@ -39,5 +39,6 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/admin/menu-items/create', ['App\Http\Controllers\Admin\MenuItemManagementController', 'create'])->name('admin.menu-items.create');
         Route::get('/admin/menu-items/{menuItem}', ['App\Http\Controllers\Admin\MenuItemManagementController', 'updatePage'])->name('admin.menu-items.update');
         Route::post('/admin/menu-items/{menuItem}', ['App\Http\Controllers\Admin\MenuItemManagementController', 'update'])->name('admin.menu-items.update');
+        Route::post('/admin/menu-items/{menuItem}/delete', ['App\Http\Controllers\Admin\MenuItemManagementController', 'delete'])->name('admin.menu-items.delete');
     });
 });

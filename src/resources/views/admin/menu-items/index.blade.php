@@ -55,6 +55,10 @@
                                     </td>
                                     <td>
                                         <a class="btn btn-secondary" href="{{ route('admin.menu-items.update', $item->id) }}">Edit</a>
+                                        <form method="POST" action="{{ route('admin.menu-items.delete', $item->id) }}">
+                                            @csrf
+                                            <button class="btn btn-danger">Delete</button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach
