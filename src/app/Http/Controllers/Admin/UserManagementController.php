@@ -7,7 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class UserController extends Controller
+class UserManagementController extends Controller
 {
     public function index(Request $request)
     {

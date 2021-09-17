@@ -16,9 +16,9 @@ class CreateMenuItemsTable extends Migration
         Schema::create('menu_items', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->unsignedDecimal('price', 8, 2);
-            $table->string('image_url');
+            // $table->string('image_url');
             $table->timestamps();
         });
     }

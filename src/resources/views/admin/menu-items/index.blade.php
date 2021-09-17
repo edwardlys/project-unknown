@@ -11,9 +11,14 @@
                     <div class="col">
                         <h3>
                             {{ $title }}
+
+                            <a type="submit" class="btn btn-primary" href="{{ route('admin.menu-items.create') }}">
+                                <i class="bi bi-plus"></i>
+                                Create New
+                            </a>
                         </h3>
 
-                        <form class="my-3" method="GET" action="{{ route('admin.users') }}">
+                        <form class="my-3" method="GET" action="{{ route('admin.menu-items') }}">
                             <input type="search" name="search" class="form-control" placeholder="Search email..." value="{{ $search }}">
                             <small><i>Press enter to search</i></small>
                         </form>
@@ -22,49 +27,40 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Username</th>
-                                    <th>Email</th>
-                                    <th>Join Date</th>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                    <th>Price</th>
+                                    <th>Image</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @if($users->count() > 0)
-                                @foreach($users as $user)
+                                @if($menuItems->count() > 0)
+                                @foreach($menuItems as $item)
                                 <tr>
                                     <td>
-                                        {{ $user->id }}
+                                        {{ $item->id }}
                                     </td>
                                     <td>
-                                        {{ $user->name }}
-                                        @if ($user->is_admin)
-                                        <span class="badge bg-success">Admin</span>
-                                        @endif
+                                        {{ $item->name }}
                                     </td>
                                     <td>
-                                        {{ $user->email }}
+                                        {{ $item->description }}
                                     </td>
                                     <td>
-                                        {{ $user->created_at }}
+                                        RM {{ $item->price }}
                                     </td>
                                     <td>
-                                        @if(!$user->is_admin)
-                                        <form method="POST" action="{{ route('admin.users.make_admin', $user->id) }}">
-                                            @csrf
-                                            <button type="submit" class="btn btn-primary">Make Admin</button>
-                                        </form>
-                                        @else
-                                        <form method="POST" action="{{ route('admin.users.remove_admin', $user->id) }}">
-                                            @csrf
-                                            <button type="submit" class="btn btn-danger">Remove Admin</button>
-                                        </form>
-                                        @endif
+                                        {{ $item->image }}
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-secondary" href="{{ route('admin.menu-items.update', $item->id) }}">Edit</a>
                                     </td>
                                 </tr>
                                 @endforeach
                                 @else
                                 <tr>
-                                    <td colspan="5" class="text-center">
+                                    <td colspan="6" class="text-center">
                                         <i>Nothing to show here...</i>
                                     </td>
                                 </tr>

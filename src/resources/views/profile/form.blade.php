@@ -19,7 +19,7 @@
                     <div class="row">
                         <div class="col">
                             <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">First name</label>
+                                <label class="form-label">First name</label>
                                 <input type="text" name="first_name" class="form-control" placeholder="Michelle" value="{{ old('first_name') ?: $profile->first_name }}">
                                 @error('first_name')
                                     <div class="alert alert-danger">{{ $message }}</div>
@@ -31,7 +31,7 @@
                     <div class="row">
                         <div class="col">
                             <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">Last name</label>
+                                <label class="form-label">Last name</label>
                                 <input type="text" name="last_name" class="form-control" placeholder="Lim" value="{{ old('last_name') ?: $profile->last_name }}">
                                 @error('last_name')
                                     <div class="alert alert-danger">{{ $message }}</div>
@@ -43,7 +43,7 @@
                     <div class="row">
                         <div class="col">
                             <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">Phone</label>
+                                <label class="form-label">Phone</label>
                                 <input type="text" name="phone" class="form-control" placeholder="+01123456789" value="{{ old('phone') ?: $profile->phone }}">
                                 @error('phone')
                                     <div class="alert alert-danger">{{ $message }}</div>
@@ -55,7 +55,7 @@
                     <div class="row">
                         <div class="col">
                             <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">Date of birth</label>
+                                <label class="form-label">Date of birth</label>
                                 <input type="date" name="date_of_birth" class="form-control" value="{{ old('date_of_birth') ?: $profile->date_of_birth }}">
                                 @error('date_of_birth')
                                     <div class="alert alert-danger">{{ $message }}</div>
@@ -67,7 +67,7 @@
                     <div class="row">
                         <div class="col">
                             <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">Address</label>
+                                <label class="form-label">Address</label>
                                 <input 
                                     type="text" 
                                     name="address" 

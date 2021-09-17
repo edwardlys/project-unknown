@@ -15,22 +15,29 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', ['App\Http\Controllers\HomeController', 'index'])->name('home');
 
-Route::get('/register', ['App\Http\Controllers\Auth\RegisterController', 'index'])->name('auth.register.index');
+Route::get('/register', ['App\Http\Controllers\Auth\RegisterController', 'index'])->name('auth.register');
 Route::post('/register', ['App\Http\Controllers\Auth\RegisterController', 'register'])->name('auth.register');
 
-Route::get('/login', ['App\Http\Controllers\Auth\LoginController', 'index'])->name('auth.login.index');
+Route::get('/login/index', ['App\Http\Controllers\Auth\LoginController', 'index'])->name('auth.login');
+Route::get('/login', ['App\Http\Controllers\Auth\LoginController', 'index'])->name('login');
 Route::post('/login', ['App\Http\Controllers\Auth\LoginController', 'login'])->name('auth.login');
 Route::get('/logout', ['App\Http\Controllers\Auth\LoginController', 'logout'])->name('auth.logout');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', ['App\Http\Controllers\ProfileController', 'index'])->name('profile');
-    Route::get('/profile/update', ['App\Http\Controllers\ProfileController', 'updatePage'])->name('profile.update.page');
+    Route::get('/profile/update', ['App\Http\Controllers\ProfileController', 'updatePage'])->name('profile.update');
     Route::post('/profile/update', ['App\Http\Controllers\ProfileController', 'update'])->name('profile.update');
 
     // Admin routes
     Route::middleware(['auth'])->group(function () {
-        Route::get('/admin/users', ['App\Http\Controllers\Admin\UserController', 'index'])->name('admin.users');
-        Route::post('/admin/users/{user}/make-admin', ['App\Http\Controllers\Admin\UserController', 'makeAdmin'])->name('admin.users.make_admin');
-        Route::post('/admin/users/{user}/remove-admin', ['App\Http\Controllers\Admin\UserController', 'removeAdmin'])->name('admin.users.remove_admin');
+        Route::get('/admin/users', ['App\Http\Controllers\Admin\UserManagementController', 'index'])->name('admin.users');
+        Route::post('/admin/users/{user}/make-admin', ['App\Http\Controllers\Admin\UserManagementController', 'makeAdmin'])->name('admin.users.make_admin');
+        Route::post('/admin/users/{user}/remove-admin', ['App\Http\Controllers\Admin\UserManagementController', 'removeAdmin'])->name('admin.users.remove_admin');
+        
+        Route::get('/admin/menu-items', ['App\Http\Controllers\Admin\MenuItemManagementController', 'index'])->name('admin.menu-items');
+        Route::get('/admin/menu-items/create', ['App\Http\Controllers\Admin\MenuItemManagementController', 'createPage'])->name('admin.menu-items.create');
+        Route::post('/admin/menu-items/create', ['App\Http\Controllers\Admin\MenuItemManagementController', 'create'])->name('admin.menu-items.create');
+        Route::get('/admin/menu-items/{menuItem}', ['App\Http\Controllers\Admin\MenuItemManagementController', 'updatePage'])->name('admin.menu-items.update');
+        Route::post('/admin/menu-items/{menuItem}', ['App\Http\Controllers\Admin\MenuItemManagementController', 'update'])->name('admin.menu-items.update');
     });
 });

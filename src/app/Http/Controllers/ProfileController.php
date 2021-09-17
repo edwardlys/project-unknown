@@ -32,7 +32,7 @@ class ProfileController extends Controller
             $profile = $user->profile()->create();
         }
 
-        return view('profile.update', compact('title', 'profile'));
+        return view('profile.form', compact('title', 'profile'));
     }
 
     public function update(Request $request)

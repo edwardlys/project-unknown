@@ -44,7 +44,7 @@
 
                     <div class="row mt-3">
                         <div class="col text-center">
-                            <a href="{{ route('auth.register.index') }}">
+                            <a href="{{ route('auth.register') }}">
                                 I don't have an account
                             </a>
                         </div>

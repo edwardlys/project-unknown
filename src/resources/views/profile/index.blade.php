@@ -110,7 +110,7 @@
                             </tbody>
                         </table>
                         <div class="d-grid mx-auto">
-                            <a class="btn btn-secondary" href="{{ route('profile.update.page') }}">
+                            <a class="btn btn-secondary" href="{{ route('profile.update') }}">
                                 Update profile information
                             </a>
                         </div>

@@ -39,6 +39,7 @@
 
                         @if (Auth::user()->is_admin)
                         <li><a class="dropdown-item" href="{{ route('admin.users') }}">User Management</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.menu-items') }}">Menu Items Management</a></li>
                         @endif
                         
                         <li><hr class="dropdown-divider"></li>
@@ -49,10 +50,10 @@
 
                 @guest
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('auth.login.index') }}">Login</a>
+                    <a class="nav-link" href="{{ route('auth.login') }}">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('auth.register.index') }}">Register</a>
+                    <a class="nav-link" href="{{ route('auth.register') }}">Register</a>
                 </li>
                 @endguest                
             </ul>

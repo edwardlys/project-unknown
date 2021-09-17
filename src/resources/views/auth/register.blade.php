@@ -62,7 +62,7 @@
 
                     <div class="row mt-3">
                         <div class="col text-center">
-                            <a href="{{ route('auth.login.index') }}">
+                            <a href="{{ route('auth.login') }}">
                                 I already have an account
                             </a>
                         </div>
