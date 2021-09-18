@@ -18,7 +18,7 @@ class CreateMenuItemsTable extends Migration
             $table->string('name');
             $table->string('description')->nullable();
             $table->unsignedDecimal('price', 8, 2);
-            // $table->string('image_url');
+            $table->string('image_url')->nullable();
             $table->timestamps();
         });
     }

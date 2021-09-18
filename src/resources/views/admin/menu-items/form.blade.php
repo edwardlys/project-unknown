@@ -13,7 +13,7 @@
                     </div>
                 </div>
 
-                <form method="POST" action="{{ $mode === 'create' && !empty($menuItem)? route('admin.menu-items.create') : route('admin.menu-items.update', $menuItem->id) }}">
+                <form method="POST" action="{{ $mode === 'create' && !empty($menuItem)? route('admin.menu-items.create') : route('admin.menu-items.update', $menuItem->id) }}" enctype="multipart/form-data">
                     @csrf
 
                     <div class="row">
@@ -50,6 +50,18 @@
                                 </div>
                                 <input type="number" min="0" step="any" name="price" class="form-control" value="{{ old('price') ?: $menuItem->price }}" required>
                                 @error('price')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <label class="form-label">Image</label>
+                                <input class="form-control" type="file" name="image">
+                                @error('image')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>

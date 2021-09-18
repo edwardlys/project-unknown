@@ -28,7 +28,6 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
-                                    <th>Description</th>
                                     <th>Price</th>
                                     <th>Image</th>
                                     <th>Actions</th>
@@ -45,13 +44,10 @@
                                         {{ $item->name }}
                                     </td>
                                     <td>
-                                        {{ $item->description }}
-                                    </td>
-                                    <td>
                                         RM {{ $item->price }}
                                     </td>
                                     <td>
-                                        {{ $item->image }}
+                                        <img src="{{ $item->image }}" width="250px" height="250px">
                                     </td>
                                     <td>
                                         <a class="btn btn-secondary" href="{{ route('admin.menu-items.update', $item->id) }}">Edit</a>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\MenuItem;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class MenuItemManagementController extends Controller
@@ -41,7 +43,8 @@ class MenuItemManagementController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|unique:menu_items',
-            'price' => 'required'
+            'price' => 'required',
+            'image' => 'image'
         ]);
 
         if ($validator->fails()) {
@@ -50,14 +53,18 @@ class MenuItemManagementController extends Controller
                 ->withErrors($validator)
                 ->withInput($request->input());
         }
-        
-        $menuItem = MenuItem::create([
-            'name' => $request->input('name'),
-            'description' => $request->input('description', null),
-            'price' => $request->input('price') 
-        ]);
 
-        if ($menuItem) {
+        $menuItem = new MenuItem;
+
+        $menuItem->name = $request->input('name');
+        $menuItem->description = $request->input('description', null);
+        $menuItem->price = $request->input('price');
+
+        if ($request->file('image')) {
+            $menuItem->image_url = $this->uploadImage($request->file('image'));
+        }
+
+        if ($menuItem->save()) {
             return redirect()
                 ->route('admin.menu-items')
                 ->with('success', 'Menu item has been created!');
@@ -81,8 +88,9 @@ class MenuItemManagementController extends Controller
     public function update(Request $request, MenuItem $menuItem)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|unique:menu_items',
-            'price' => 'required'
+            'name' => 'required',
+            'price' => 'required',
+            'image' => 'image'
         ]);
 
         if ($validator->fails()) {
@@ -91,10 +99,14 @@ class MenuItemManagementController extends Controller
                 ->withErrors($validator)
                 ->withInput($request->input());
         }
-        
+
         $menuItem->name = $request->input('name');
         $menuItem->description = $request->input('description', null);
         $menuItem->price = $request->input('price');
+
+        if ($request->file('image')) {
+            $menuItem->image_url = $this->uploadImage($request->file('image'));
+        }
 
         if ($menuItem->save()) {
             return redirect()
@@ -119,5 +131,14 @@ class MenuItemManagementController extends Controller
                 ->back()
                 ->with('error', 'Unable to delete menu item at the moment, please contact the system administrators');
         }
+    }
+
+    private function uploadImage(UploadedFile $imageFile)
+    {
+        $extension = $imageFile->extension();
+        $filePath = MenuItem::DEFAULT_MENU_ITEM_IMAGE_FOLDER . uniqid() . '-' . md5($imageFile->path()) . '.' . $extension; 
+        $imageFile->storeAs('/public', $filePath);
+
+        return Storage::url($filePath);            
     }
 }
