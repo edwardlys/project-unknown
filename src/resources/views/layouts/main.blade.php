@@ -13,9 +13,9 @@
     </head>
     <body>
         @include('components.navbar')
-        @include('components.flash-message')
-
+        
         <div class="content container pt-5">
+            @include('components.flash-message')
             @yield('content')
         </div>
 
