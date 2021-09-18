@@ -15,7 +15,7 @@
         @include('components.navbar')
         @include('components.flash-message')
 
-        <div class="content container pt-5">
+        <div class="content container-fluid pt-5">
             @yield('content')
         </div>
 

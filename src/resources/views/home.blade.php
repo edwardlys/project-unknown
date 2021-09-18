@@ -1,14 +1,14 @@
-@extends('layouts.main')
+@extends('layouts.main-full-width')
 
 @section('title', $title)
 
 @section('content')
-<div class="row mt-5">
+<div class="row">
     <div class="col">
         <div class="container-fluid">
-            @foreach($menuItems as $item)
-            <div class="row mt-5">
-                <div class="col">
+            <div class="row">
+                @foreach($menuItems as $item)
+                <div class="col-4 mt-5 my-1">
                     <div class="card mx-auto" style="width: 500px;">
                         <img src="{{ $item->image }}" class="card-img-top" height="500px" width="500px">
                         <div class="card-body">
@@ -20,8 +20,8 @@
                         </div>
                     </div>
                 </div>
+                @endforeach
             </div>
-            @endforeach
         </div>
     </div>
 </div>
