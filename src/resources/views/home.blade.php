@@ -16,7 +16,7 @@
                             <p class="card-text">
                                 {{ $item->description }}
                             </p>
-                            <a href="#" class="btn btn-primary">Buy at RM {{ money_format('%n', $item->price) }}</a>
+                            <a href="#" class="btn btn-primary">Buy at RM {{ number_format($item->price, 2) }}</a>
                         </div>
                     </div>
                 </div>
