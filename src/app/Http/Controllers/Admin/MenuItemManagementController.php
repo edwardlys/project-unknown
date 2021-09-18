@@ -136,7 +136,7 @@ class MenuItemManagementController extends Controller
     private function uploadImage(UploadedFile $imageFile)
     {
         $extension = $imageFile->extension();
-        $filePath = MenuItem::DEFAULT_MENU_ITEM_IMAGE_FOLDER . uniqid() . '-' . md5($imageFile->path()) . '.' . $extension; 
+        $filePath = MenuItem::DEFAULT_MENU_ITEM_IMAGE_FOLDER . uniqid() . '-' . md5($imageFile->path()) . '-' . strtotime("now") . '.' . $extension; 
         $imageFile->storeAs('/public', $filePath);
 
         return Storage::url($filePath);            
