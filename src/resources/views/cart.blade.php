@@ -57,14 +57,14 @@
 
                                     </td>
                                     <td>
-                                        Total:
+                                        <strong><i>Total:</i></strong>
                                     </td>
                                     <td>
-                                        <strong>RM {{ number_format($cartTotalPrice, 2) }}</strong>
+                                        <strong><i>RM {{ number_format($cartTotalPrice, 2) }}<i></strong>
                                     </td>
                                     <td>
                                         <form method="GET" action="#">
-                                            <button class="btn btn-primary">Checkout</button>
+                                            <button class="btn btn-primary" {{ count($cartItems) > 0 ? '': 'disabled' }}>Checkout</button>
                                         </form>
                                     </td>
                                 </tr>

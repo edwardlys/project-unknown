@@ -66,7 +66,7 @@ $cartItems = Session::get('user.cart', []);
                 <li class="nav-item px-2">
                     <a href="{{ route('cart') }}" class="btn btn-light">
                         <i class="bi bi-cart-fill"></i>
-                        <span class="badge rounded-pill bg-danger">{{ count($cartItems) }}</span>
+                        <span class="badge rounded-pill bg-danger">{{ count($cartItems) > 0 ? count($cartItems) : null }}</span>
                     </a>
                 </li>
             </ul>
