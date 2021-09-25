@@ -23,6 +23,11 @@ Route::get('/login', ['App\Http\Controllers\Auth\LoginController', 'index'])->na
 Route::post('/login', ['App\Http\Controllers\Auth\LoginController', 'login'])->name('auth.login');
 Route::get('/logout', ['App\Http\Controllers\Auth\LoginController', 'logout'])->name('auth.logout');
 
+Route::get('/cart', ['App\Http\Controllers\CartController', 'index'])->name('cart');
+Route::post('/cart/add', ['App\Http\Controllers\CartController', 'add'])->name('cart.add');
+Route::post('/cart/remove/{cartItemId}', ['App\Http\Controllers\CartController', 'remove'])->name('cart.remove');
+Route::post('/cart/clear', ['App\Http\Controllers\CartController', 'clear'])->name('cart.clear');
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', ['App\Http\Controllers\ProfileController', 'index'])->name('profile');
     Route::get('/profile/update', ['App\Http\Controllers\ProfileController', 'updatePage'])->name('profile.update');

@@ -1,3 +1,9 @@
+<?php
+use Illuminate\Support\Facades\Session;
+
+$cartItems = Session::get('user.cart', []);
+?>
+
 <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">{{ env('APP_NAME') }}</a>
@@ -23,7 +29,7 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 @auth
-                <li class="nav-item dropdown">
+                <li class="nav-item px-2 dropdown">
                     <a 
                         class="nav-link dropdown-toggle" 
                         href="#" 
@@ -49,13 +55,20 @@
                 @endauth
 
                 @guest
-                <li class="nav-item">
+                <li class="nav-item px-2">
                     <a class="nav-link" href="{{ route('auth.login') }}">Login</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item px-2">
                     <a class="nav-link" href="{{ route('auth.register') }}">Register</a>
                 </li>
-                @endguest                
+                @endguest
+                
+                <li class="nav-item px-2">
+                    <a href="{{ route('cart') }}" class="btn btn-light">
+                        <i class="bi bi-cart-fill"></i>
+                        <span class="badge rounded-pill bg-danger">{{ count($cartItems) }}</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

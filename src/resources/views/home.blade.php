@@ -16,7 +16,12 @@
                             <p class="card-text">
                                 {{ $item->description }}
                             </p>
-                            <a href="#" class="btn btn-primary">Buy at RM {{ number_format($item->price, 2) }}</a>
+
+                            <form method="POST" action="{{ route('cart.add') }}">
+                                <input type="hidden" name="menu_item_id" value="{{ $item->id }}">
+                                @csrf
+                                <button type="submit" class="btn btn-primary">Buy at RM {{ number_format($item->price, 2) }}</button>
+                            </form>
                         </div>
                     </div>
                 </div>

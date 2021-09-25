@@ -44,7 +44,7 @@
                                         {{ $item->name }}
                                     </td>
                                     <td>
-                                        RM {{ $item->price }}
+                                        RM {{ number_format($item->price, 2) }}
                                     </td>
                                     <td>
                                         <img src="{{ $item->image }}" width="250px" height="250px">
