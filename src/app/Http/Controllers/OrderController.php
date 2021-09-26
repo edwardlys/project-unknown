@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -12,7 +13,7 @@ class OrderController extends Controller
     {
         $title = 'Orders';
 
-        $orders = Order::all();
+        $orders = Order::where('user_id', Auth::user()->id)->get();
 
         return view('orders.index', compact('title', 'orders'));
     }

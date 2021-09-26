@@ -38,7 +38,7 @@
                                         @endforeach
                                     </td>
                                     <td>
-                                        RM {{ number_format($order->payment->amount, 2) }}
+                                        RM {{ number_format($order->payment->amount, 2) }} <i>(Paid with: {{ $order->payment->cc_masked_pan }})</i>
                                     </td>
                                     <td>
                                         {{ $order->delivery_address }}

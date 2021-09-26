@@ -45,6 +45,8 @@ $cartItems = Session::get('user.cart', []);
                         <li><a class="dropdown-item" href="{{ route('orders') }}">Orders</a></li>
 
                         @if (Auth::user()->is_admin)
+                        <hr>
+                        
                         <li><a class="dropdown-item" href="{{ route('admin.users') }}">User Management</a></li>
                         <li><a class="dropdown-item" href="{{ route('admin.menu-items') }}">Menu Items Management</a></li>
                         @endif
