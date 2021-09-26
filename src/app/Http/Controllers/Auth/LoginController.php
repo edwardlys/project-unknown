@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
 {
@@ -18,12 +19,15 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        $user = User::whereRaw('email = "' . $request->email . '"')
+        $user = DB::table('users')
+            ->whereRaw('email = "' . $request->email . '"')
             ->whereRaw('password = "' . $request->password . '"')
             ->first();
 
         if (!empty($user)) {
-            Auth::login($user);
+            $userModel = User::find($user->id);
+
+            Auth::login($userModel);
 
             $request->session()->regenerate();
 
