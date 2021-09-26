@@ -17,10 +17,15 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
+
                                     <th>Items</th>
                                     <th>Paid Amount</th>
                                     <th>Delivery Address</th>
                                     <th>Status</th>
+                                    @if (Auth::user()->is_admin)
+                                    <th>User</th>
+                                    <th>Actions</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -50,6 +55,17 @@
                                         <span class="badge bg-success">{{ $order->statusText }}</span>
                                         @endif
                                     </td>
+                                    @if (Auth::user()->is_admin)
+                                    <th>
+                                        {{ $order->user->name }} ({{ $order->user->email }})
+                                    </th>
+                                    <th>
+                                        <form method="POST" action="{{ route('admin.orders.complete', $order->id) }}">
+                                            @csrf
+                                            <button type="submit" class="btn btn-primary" {{ $order->status == 0 ? '': 'disabled' }}>Complete Order</button>
+                                        </form>
+                                    </th>
+                                    @endif
                                 </tr>
                                 @endforeach
                                 @else

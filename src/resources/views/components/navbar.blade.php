@@ -38,7 +38,7 @@ $cartItems = Session::get('user.cart', []);
                         data-bs-toggle="dropdown" 
                         aria-expanded="false"
                     >
-                        <i class="bi bi-person-fill"></i>
+                        <strong>{{ Auth::user()->name }}</strong>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="{{ route('profile') }}">Profile</a></li>
@@ -49,6 +49,7 @@ $cartItems = Session::get('user.cart', []);
                         
                         <li><a class="dropdown-item" href="{{ route('admin.users') }}">User Management</a></li>
                         <li><a class="dropdown-item" href="{{ route('admin.menu-items') }}">Menu Items Management</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.orders') }}">Orders Management</a></li>
                         @endif
                         
                         <li><hr class="dropdown-divider"></li>

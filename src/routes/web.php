@@ -49,5 +49,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/menu-items/{menuItem}', ['App\Http\Controllers\Admin\MenuItemManagementController', 'updatePage'])->name('admin.menu-items.update');
         Route::post('/admin/menu-items/{menuItem}', ['App\Http\Controllers\Admin\MenuItemManagementController', 'update'])->name('admin.menu-items.update');
         Route::post('/admin/menu-items/{menuItem}/delete', ['App\Http\Controllers\Admin\MenuItemManagementController', 'delete'])->name('admin.menu-items.delete');
+
+        Route::get('/admin/orders', ['App\Http\Controllers\Admin\OrderManagementController', 'index'])->name('admin.orders');
+        Route::post('/admin/orders/{order}/complete', ['App\Http\Controllers\Admin\OrderManagementController', 'complete'])->name('admin.orders.complete');
     });
 });
