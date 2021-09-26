@@ -57,5 +57,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/admin/orders/{order}/complete', ['App\Http\Controllers\Admin\OrderManagementController', 'complete'])->name('admin.orders.complete');
 
         Route::get('/admin/feedbacks', ['App\Http\Controllers\Admin\FeedbackManagementController', 'index'])->name('admin.feedbacks');
+
+        Route::get('/admin/reports/menu-item-sale', ['App\Http\Controllers\Admin\Reports\MenuItemSalesController', 'index'])->name('admin.reports.menu-item-sales');
     });
 });

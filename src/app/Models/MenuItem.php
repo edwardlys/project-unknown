@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\OrderItem;
 
 class MenuItem extends Model
 {
@@ -23,5 +24,10 @@ class MenuItem extends Model
         }
 
         return url(self::DEFAULT_IMAGE);
+    }
+
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class);
     }
 }

@@ -51,6 +51,10 @@ $cartItems = Session::get('user.cart', []);
                         <li><a class="dropdown-item" href="{{ route('admin.menu-items') }}">Menu Items Management</a></li>
                         <li><a class="dropdown-item" href="{{ route('admin.orders') }}">Orders Management</a></li>
                         <li><a class="dropdown-item" href="{{ route('admin.feedbacks') }}">Feedbacks Management</a></li>
+
+                        <hr>
+
+                        <li><a class="dropdown-item" href="{{ route('admin.reports.menu-item-sales') }}">Menu Sales Report</a></li>
                         @endif
                         
                         <li><hr class="dropdown-divider"></li>
