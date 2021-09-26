@@ -28,6 +28,9 @@ Route::post('/cart/add', ['App\Http\Controllers\CartController', 'add'])->name('
 Route::post('/cart/remove/{cartItemId}', ['App\Http\Controllers\CartController', 'remove'])->name('cart.remove');
 Route::post('/cart/clear', ['App\Http\Controllers\CartController', 'clear'])->name('cart.clear');
 
+Route::get('/feedback', ['App\Http\Controllers\FeedbackController', 'index'])->name('feedback');
+Route::post('/feedback', ['App\Http\Controllers\FeedbackController', 'create'])->name('feedback.create');
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', ['App\Http\Controllers\ProfileController', 'index'])->name('profile');
     Route::get('/profile/update', ['App\Http\Controllers\ProfileController', 'updatePage'])->name('profile.update');
@@ -52,5 +55,7 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('/admin/orders', ['App\Http\Controllers\Admin\OrderManagementController', 'index'])->name('admin.orders');
         Route::post('/admin/orders/{order}/complete', ['App\Http\Controllers\Admin\OrderManagementController', 'complete'])->name('admin.orders.complete');
+
+        Route::get('/admin/feedbacks', ['App\Http\Controllers\Admin\FeedbackManagementController', 'index'])->name('admin.feedbacks');
     });
 });

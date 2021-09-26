@@ -24,7 +24,7 @@ $cartItems = Session::get('user.cart', []);
                     <a class="nav-link" href="{{ route('home') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">News</a>
+                    <a class="nav-link" href="{{ route('feedback') }}">Feedback</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -50,6 +50,7 @@ $cartItems = Session::get('user.cart', []);
                         <li><a class="dropdown-item" href="{{ route('admin.users') }}">User Management</a></li>
                         <li><a class="dropdown-item" href="{{ route('admin.menu-items') }}">Menu Items Management</a></li>
                         <li><a class="dropdown-item" href="{{ route('admin.orders') }}">Orders Management</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.feedbacks') }}">Feedbacks Management</a></li>
                         @endif
                         
                         <li><hr class="dropdown-divider"></li>
