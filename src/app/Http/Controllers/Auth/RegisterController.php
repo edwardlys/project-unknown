@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -20,7 +19,7 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'email' => 'required|email|unique:users',
+            'email' => 'required',
             'password' => 'required|confirmed'
         ]);
 
@@ -31,23 +30,14 @@ class RegisterController extends Controller
                 ->withInput($request->input());
         }
         
-        list($name, $emailDomain) = explode('@', $request->email);
-
-        $user = User::create([
-            'name' => $name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
-        ]);
-
-        if ($user) {
-            return redirect()
-                ->route('home')
-                ->with('success', 'Account has been created! Please login with your credentials');
-        }
-
+        $name = $request->email;
+        $email = $request->email;
+        $password = $request->password;
+        
+        DB::unprepared("INSERT INTO users (name, email, password) value ('$name', '$email', '$password')");
+       
         return redirect()
-            ->route('register')
-            ->withInput($request->input())
-            ->with('error', 'Unable to create new account at the moment, please contact the system administrators');
+            ->route('home')
+            ->with('success', 'Account has been created! Please login with your credentials');
     }
 }

@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Feedback;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class FeedbackController extends Controller
 {
@@ -18,12 +17,12 @@ class FeedbackController extends Controller
 
     public function create(Request $request)
     {
-        Feedback::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'rating' => $request->rating,
-            'message' => $request->message,
-        ]);
+        $name = $request->email;
+        $email = $request->email;
+        $rating = $request->rating;
+        $message = $request->message;
+        
+        DB::unprepared("INSERT INTO feedbacks (name, email, rating, message) value ('$name', '$email', '$rating', '$message')");
 
         return redirect()
             ->route('home')

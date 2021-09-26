@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
@@ -18,19 +18,13 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|email|exists:users',
-            'password' => 'required'
-        ]);
+        $user = User::whereRaw('email = "' . $request->email . '"')
+            ->whereRaw('password = "' . $request->password . '"')
+            ->first();
 
-        if ($validator->fails()) {
-            return redirect()
-                ->back()
-                ->withErrors($validator)
-                ->withInput($request->input());
-        }
+        if (!empty($user)) {
+            Auth::login($user);
 
-        if (Auth::attempt($request->only('email', 'password'))) {
             $request->session()->regenerate();
 
             return redirect()
