@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\OrderItem;
+use App\Models\Payment;
 
 class Order extends Model
 {
@@ -22,10 +23,31 @@ class Order extends Model
     protected $fillable = [
         'user_id',
         'status',
+        'delivery_address',
     ];
 
     public function items()
     {
         return $this->hasMany(OrderItem::class);
+    }
+
+    public function payment()
+    {
+        return $this->hasOne(Payment::class);
+    }
+
+    public function getStatusTextAttribute()
+    {
+        switch ($this->status) {
+            case 0:
+                return 'Pending';
+                break;
+            case 1:
+                return 'Completed';
+                break;
+            default:
+                return 'Pending';
+                break;
+        }
     }
 }

@@ -39,7 +39,6 @@ class CartController extends Controller
 
         $orderItem = new OrderItem;
         $orderItem->menu_item_id = $request->menu_item_id;
-        $orderItem->quantity = 1;
 
         $cartItems = $request->session()->get('user.cart');
 

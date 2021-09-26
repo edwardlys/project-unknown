@@ -33,6 +33,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile/update', ['App\Http\Controllers\ProfileController', 'updatePage'])->name('profile.update');
     Route::post('/profile/update', ['App\Http\Controllers\ProfileController', 'update'])->name('profile.update');
 
+    Route::get('/payment', ['App\Http\Controllers\PaymentController', 'index'])->name('payment');
+    Route::post('/payment', ['App\Http\Controllers\PaymentController', 'pay'])->name('payment.create');
+    Route::get('/orders', ['App\Http\Controllers\OrderController', 'index'])->name('orders');
+
     // Admin routes
     Route::middleware(['auth'])->group(function () {
         Route::get('/admin/users', ['App\Http\Controllers\Admin\UserManagementController', 'index'])->name('admin.users');
