@@ -54,6 +54,36 @@
 
                     <div class="row">
                         <div class="col">
+                            <div class="mb-3">
+                                <label class="form-label">Phone</label>
+                                <input type="text" name="phone" class="form-control" placeholder="+01123456789" value="{{ old('phone') }}">
+                                @error('phone')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <label class="form-label">Address</label>
+                                <input 
+                                    type="text" 
+                                    name="address" 
+                                    class="form-control" 
+                                    placeholder="2A, Jalan Tanjung 1, Taman Arnab, 93000, Ampang, Selangor" 
+                                    value="{{ old('address') }}"
+                                >
+                                @error('address')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
                             <div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>

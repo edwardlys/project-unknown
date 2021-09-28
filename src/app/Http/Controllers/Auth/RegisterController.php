@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -36,6 +37,14 @@ class RegisterController extends Controller
         
         DB::unprepared("INSERT INTO users (name, email, password) value ('$name', '$email', '$password')");
        
+        $userId = User::where('email', $email)->first()->id;
+        $phone = $request->phone;
+        $address = $request->address;
+
+        if ($userId && $phone && $address) {
+            DB::unprepared("INSERT INTO profiles (user_id, phone, `address`) value ('$userId', '$phone', '$address')");
+        }
+
         return redirect()
             ->route('home')
             ->with('success', 'Account has been created! Please login with your credentials');
