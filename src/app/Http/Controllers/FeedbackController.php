@@ -21,8 +21,9 @@ class FeedbackController extends Controller
         $email = $request->email;
         $rating = $request->rating;
         $message = $request->message;
-        
-        DB::unprepared("INSERT INTO feedbacks (name, email, rating, message) value ('$name', '$email', '$rating', '$message')");
+        $additionalRatings = json_encode($request->additional_ratings);
+
+        DB::unprepared("INSERT INTO feedbacks (name, email, rating, message, additional_ratings) value ('$name', '$email', '$rating', '$message', '$additionalRatings')");
 
         return redirect()
             ->route('home')

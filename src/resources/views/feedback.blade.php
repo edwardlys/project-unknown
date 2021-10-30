@@ -46,22 +46,67 @@
                         </div>
                     </div>
 
+                    <hr>
+
                     <div class="row">
                         <div class="col">
                             <div class="mb-3">
                                 <label class="form-label">Rating</label>
-                                <input type="range" name="rating" class="form-range" min="0" max="10" step="1" required>
+                                <input type="range" name="rating" class="form-range" min="0" max="10" step="1" value="0" required>
                                 <div class="d-flex justify-content-between">
                                     <small class="text-muted">Bad</small> 
                                     <small class="text-muted">Good</small>
                                 </div>
-
-                                @error('rating')
-                                    <div class="alert alert-danger">{{ $message }}</div>
-                                @enderror
                             </div>
                         </div>
                     </div>
+
+                    <hr>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <label class="form-label">Quality of food</label>
+                                <input type="range" name="additional_ratings[quality_of_food]" class="form-range" min="0" max="10" step="1" value="0" required>
+                                <div class="d-flex justify-content-between">
+                                    <small class="text-muted">Bad</small> 
+                                    <small class="text-muted">Good</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <label class="form-label">Friendliness of staffs</label>
+                                <input type="range" name="additional_ratings[friendliness_of_staff]" class="form-range" min="0" max="10" step="1" value="0" required>
+                                <div class="d-flex justify-content-between">
+                                    <small class="text-muted">Bad</small> 
+                                    <small class="text-muted">Good</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <label class="form-label">Value for money</label>
+                                <input type="range" name="additional_ratings[value_for_money]" class="form-range" min="0" max="10" step="1" value="0" required>
+                                <div class="d-flex justify-content-between">
+                                    <small class="text-muted">Bad</small> 
+                                    <small class="text-muted">Good</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
 
                     <div class="row">
                         <div class="col">

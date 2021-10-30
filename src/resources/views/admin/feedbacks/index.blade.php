@@ -19,6 +19,9 @@
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Rating</th>
+                                    <th>Friendliness of staffs</th>
+                                    <th>Quality of food</th>
+                                    <th>Value for money</th>
                                     <th>Message</th>
                                 </tr>
                             </thead>
@@ -42,6 +45,15 @@
                                     </td>
                                     <td>
                                         {{ $feedback->rating }} / 10
+                                    </td>
+                                    <td>
+                                        {{ $feedback->friendliness_of_staff }} / 10
+                                    </td>
+                                    <td>
+                                        {{ $feedback->quality_of_food }} / 10
+                                    </td>
+                                    <td>
+                                        {{ $feedback->value_for_money }} / 10
                                     </td>
                                     <td>
                                         {{ $feedback->message }}
