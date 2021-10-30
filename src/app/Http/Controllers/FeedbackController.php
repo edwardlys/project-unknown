@@ -17,7 +17,7 @@ class FeedbackController extends Controller
 
     public function create(Request $request)
     {
-        $name = $request->email;
+        $name = $request->name;
         $email = $request->email;
         $rating = $request->rating;
         $message = $request->message;
