@@ -10,7 +10,7 @@ class FeedbackManagementController extends Controller
 {
     public function index(Request $request)
     {
-        $title = 'Orders Management';
+        $title = 'Feedbacks Management';
         
         $feedbacks = Feedback::all();
 
