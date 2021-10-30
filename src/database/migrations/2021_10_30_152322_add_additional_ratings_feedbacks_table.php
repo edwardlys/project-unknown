@@ -15,6 +15,7 @@ class AddAdditionalRatingsFeedbacksTable extends Migration
     {
         Schema::table('feedbacks', function (Blueprint $table) {
             $table->json('additional_ratings');
+            $table->string('attachment_url');
         });
     }
 
@@ -28,6 +29,7 @@ class AddAdditionalRatingsFeedbacksTable extends Migration
         if (Schema::hasColumn('feedbacks', 'additional_ratings')) {
             Schema::table('feedbacks', function (Blueprint $table) {
                 $table->dropColumn('additional_ratings');
+                $table->dropColumn('attachment_url');
             });
         }
     }

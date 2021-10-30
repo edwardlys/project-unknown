@@ -7,6 +7,8 @@ use App\Models\User;
 
 class Feedback extends Model
 {
+    CONST DEFAULT_FEEDBACK_ATTACHMENTS_FOLDER = 'attachments/feedback-images/';
+
     protected $table = 'feedbacks';
 
     protected $fillable = [
@@ -14,6 +16,7 @@ class Feedback extends Model
         'email',
         'rating',
         'additional_ratings',
+        'attachment_url',
         'message',
     ];
 

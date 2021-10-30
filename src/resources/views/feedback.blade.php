@@ -21,7 +21,7 @@
 
                 <hr>
 
-                <form method="POST" action="{{ route('feedback.create') }}">
+                <form method="POST" action="{{ route('feedback.create') }}" enctype="multipart/form-data">
                     @csrf
 
                     <div class="row">
@@ -116,6 +116,15 @@
                                 @error('message')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <label class="form-label">Attachment</label>
+                                <input class="form-control" type="file" name="attachment">
                             </div>
                         </div>
                     </div>

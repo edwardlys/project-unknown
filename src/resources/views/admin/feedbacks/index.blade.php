@@ -23,6 +23,7 @@
                                     <th>Quality of food</th>
                                     <th>Value for money</th>
                                     <th>Message</th>
+                                    <th>Attachment</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -57,6 +58,13 @@
                                     </td>
                                     <td>
                                         {{ $feedback->message }}
+                                    </td>
+                                    <td>
+                                        @if (empty($feedback->attachment_url))
+                                        <i>N/A</i>
+                                        @else
+                                        <a href="{{ $feedback->attachment_url }}" target="_blank">Open attachment</a>
+                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach
