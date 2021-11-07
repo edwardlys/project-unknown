@@ -25,13 +25,13 @@ class FeedbackController extends Controller
         $rating = $request->rating;
         $message = $request->message;
         $additionalRatings = json_encode($request->additional_ratings);
+        $attachmentUrl = '';
 
         if ($request->file('attachment')) {
             $attachmentUrl = $this->uploadAttachment($request->file('attachment'));
-            DB::unprepared("INSERT INTO feedbacks (name, email, rating, message, additional_ratings, attachment_url) value ('$name', '$email', '$rating', '$message', '$additionalRatings', '$attachmentUrl')");
-        } else {
-            DB::unprepared("INSERT INTO feedbacks (name, email, rating, message, additional_ratings) value ('$name', '$email', '$rating', '$message', '$additionalRatings')");
         }
+
+        DB::unprepared("INSERT INTO feedbacks (name, email, rating, message, additional_ratings, attachment_url) value ('$name', '$email', '$rating', '$message', '$additionalRatings', '$attachmentUrl')");
 
         return redirect()
             ->route('home')
