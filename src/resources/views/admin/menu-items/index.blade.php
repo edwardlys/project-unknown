@@ -19,7 +19,7 @@
                         </h3>
 
                         <form class="my-3" method="GET" action="{{ route('admin.menu-items') }}">
-                            <input type="search" name="search" class="form-control" placeholder="Search email..." value="{{ $search }}">
+                            <input type="search" name="search" class="form-control" placeholder="Search item..." value="{{ $search }}">
                             <small><i>Press enter to search</i></small>
                         </form>
 
